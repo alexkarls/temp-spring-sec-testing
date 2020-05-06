@@ -10,13 +10,12 @@ import java.util.Collection;
 import java.util.Set;
 
 @Entity
-public class User implements UserDetails {
+public class User implements IUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
-
     private String password;
     /*
     @ElementCollection
@@ -48,10 +47,19 @@ public class User implements UserDetails {
         this.isEnabled = isEnabled;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
     @Override
     public String getUsername() {
         return username;
     }
+
 
     @Override
     public String getPassword() {
@@ -83,4 +91,33 @@ public class User implements UserDetails {
         return role.getGrantedAuthorities();
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", isAccountNonExpired=" + isAccountNonExpired +
+                ", isAccountNonLocked=" + isAccountNonLocked +
+                ", isCredentialsNonExpired=" + isCredentialsNonExpired +
+                ", isEnabled=" + isEnabled +
+                '}';
+    }
 }

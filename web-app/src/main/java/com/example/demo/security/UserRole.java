@@ -19,7 +19,7 @@ public enum UserRole {
         this.authorities = authorities;
     }
 
-    public Set<UserAuthority> getAuthorities() {
+    private Set<UserAuthority> getAuthorities() {
         return authorities;
     }
 
